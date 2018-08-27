@@ -14,7 +14,8 @@ import {
   getScope,
   processCss,
   createReactComponentImportDeclaration,
-  setStateOptions
+  setStateOptions,
+  wrapWithIIFE
 } from './_utils'
 
 import { STYLE_COMPONENT } from './_constants'
@@ -178,6 +179,8 @@ export default function({ types: t }) {
             )
             state.className = className
             state.staticClassName = staticClassName
+
+            wrapWithIIFE(path, state)
           }
 
           state.hasJSXStyle = true

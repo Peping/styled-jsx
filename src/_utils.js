@@ -644,3 +644,34 @@ export const setStateOptions = state => {
 export function log(message) {
   console.log('[styled-jsx] ' + message)
 }
+
+export function wrapWithIIFE(path, state) {
+  const iife = t.callExpression(
+    t.arrowFunctionExpression(
+      [],
+      t.blockStatement(
+        [
+          t.variableDeclaration(
+            'const',
+            [
+              t.variableDeclarator(
+                t.identifier('JSX_CLASSNAME'),
+                state.className
+              )
+            ]
+          ),
+          t.returnStatement(
+            path.node
+          )
+        ]
+      )
+    ),
+    []
+  )
+
+  if (t.isJSXElement(path.parent.node)) {
+    path.replaceWith(t.jSXExpressionContainer(iife))
+  } else {
+    path.replaceWith(iife)
+  }
+}
