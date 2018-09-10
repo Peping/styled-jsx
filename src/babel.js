@@ -14,8 +14,7 @@ import {
   getScope,
   processCss,
   createReactComponentImportDeclaration,
-  setStateOptions,
-  wrapWithIIFE
+  setStateOptions
 } from './_utils'
 
 import { STYLE_COMPONENT } from './_constants'
@@ -179,8 +178,6 @@ export default function({ types: t }) {
             )
             state.className = className
             state.staticClassName = staticClassName
-
-            wrapWithIIFE(path, state)
           }
 
           state.hasJSXStyle = true
@@ -254,6 +251,11 @@ export default function({ types: t }) {
           })
 
           path.replaceWith(makeStyledJsxTag(hash, css, expressions))
+        }
+      },
+      Identifier(path, state) {
+        if (path.node.name === "JSX_CLASSNAME" && state.hasJSXStyle) {
+          path.replaceWith(state.className)
         }
       },
       Program: {
