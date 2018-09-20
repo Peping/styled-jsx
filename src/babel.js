@@ -258,6 +258,21 @@ export default function({ types: t }) {
           path.replaceWith(state.className)
         }
       },
+      TaggedTemplateExpression(path, state) {
+        if (t.isIdentifier(path.node.tag, {name: 'jsx'})) {
+          path.replaceWith(
+            t.binaryExpression(
+              '+',
+              t.binaryExpression(
+                '+',
+                state.className,
+                t.stringLiteral(' ')
+              ),
+              path.node.quasi
+            )
+          )
+        }
+      },
       Program: {
         enter(path, state) {
           state.hasJSXStyle = null

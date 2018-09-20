@@ -9,7 +9,7 @@ module.exports = _defaultExport;"
 `;
 
 exports[`(optimized) transpiles external stylesheets 1`] = `
-"import _JSXStyle from 'styled-jsx/style';
+"import _JSXStyle from 'comfy-styled-jsx/style';
 
 import colors, { size } from './constants';
 const color = 'red';
@@ -54,7 +54,7 @@ export default {
 exports[`Makes sure that style nodes are not re-used 1`] = `
 "\\"use strict\\";
 
-var _style = _interopRequireDefault(require(\\"styled-jsx/style\\"));
+var _style = _interopRequireDefault(require(\\"comfy-styled-jsx/style\\"));
 
 var _App = _interopRequireDefault(require(\\"./App.styles\\"));
 
@@ -101,7 +101,7 @@ export const Component = () => <AnotherTitle>My page</AnotherTitle>;"
 `;
 
 exports[`injects JSXStyle for nested scope 1`] = `
-"import _JSXStyle from 'styled-jsx/style';
+"import _JSXStyle from 'comfy-styled-jsx/style';
 
 
 function test() {
@@ -122,7 +122,7 @@ module.exports = _defaultExport;"
 `;
 
 exports[`transpiles external stylesheets 1`] = `
-"import _JSXStyle from 'styled-jsx/style';
+"import _JSXStyle from 'comfy-styled-jsx/style';
 
 import colors, { size } from './constants';
 const color = 'red';
@@ -165,7 +165,7 @@ export default {
 `;
 
 exports[`use external stylesheet and dynamic element 1`] = `
-"import _JSXStyle from \\"styled-jsx/style\\";
+"import _JSXStyle from \\"comfy-styled-jsx/style\\";
 import styles from './styles2';
 
 export default (({ level = 1 }) => {
@@ -179,7 +179,7 @@ export default (({ level = 1 }) => {
 `;
 
 exports[`use external stylesheets (global only) 1`] = `
-"import _JSXStyle from 'styled-jsx/style';
+"import _JSXStyle from 'comfy-styled-jsx/style';
 import styles, { foo as styles3 } from './styles';
 
 const styles2 = require('./styles2');
@@ -195,7 +195,7 @@ export default (() => <div>
 `;
 
 exports[`use external stylesheets (multi-line) 1`] = `
-"import _JSXStyle from 'styled-jsx/style';
+"import _JSXStyle from 'comfy-styled-jsx/style';
 import styles from './styles';
 
 export default (() => <div className={\`jsx-\${styles.__hash}\`}>
@@ -205,7 +205,7 @@ export default (() => <div className={\`jsx-\${styles.__hash}\`}>
 `;
 
 exports[`use external stylesheets 1`] = `
-"import _JSXStyle from 'styled-jsx/style';
+"import _JSXStyle from 'comfy-styled-jsx/style';
 import styles from './styles';
 const styles2 = require('./styles2');
 import { foo as styles3 } from './styles';
